@@ -68,7 +68,8 @@ It displays:
 - Current Date
 - Food Status Overview
 
-![Dashboard](screenshots/dashboard.png)
+<img width="1920" height="1080" alt="Screenshot (159)" src="https://github.com/user-attachments/assets/f436a950-a871-4093-bfb0-f679591bc5f2" />
+
 
 ---
 
@@ -89,7 +90,8 @@ Information includes:
 
 Users can also search for food using the food name or category.
 
-![Food Items](screenshots/foods.png)
+<img width="1920" height="1080" alt="Screenshot (160)" src="https://github.com/user-attachments/assets/6bb47eba-5752-4a68-8ce1-e06daf29353d" />
+
 
 ---
 
@@ -106,8 +108,8 @@ The form contains:
 - Purchase Date
 - Expiry Date
 - Supplier
+<img width="1920" height="1080" alt="Screenshot (161)" src="https://github.com/user-attachments/assets/cdbf4bd2-8373-4c80-8336-499a1ea525b5" />
 
-![Add Food](screenshots/add-food.png)
 
 ---
 
@@ -122,7 +124,8 @@ Supplier information includes:
 - Phone Number
 - Email Address
 
-![Suppliers](screenshots/suppliers.png)
+
+
 
 ---
 
@@ -136,7 +139,8 @@ It shows:
 - Username
 - Role
 
-![Profile](screenshots/profile.png)
+
+
 
 ---
 
