@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshAlert - Edit Food</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">🍃</span>
+        FreshAlert
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+        <a href="{{ url_for('foods') }}" class="active">
+            🍴 Foods
+        </a>
+
+        <a href="{{ url_for('suppliers') }}">
+            🚚 Suppliers
+        </a>
+
+        <a href="{{ url_for('profile') }}">
+            👤 Profile
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- EDIT FORM -->
+<div class="form-page">
+
+    <!-- LEFT SIDE -->
+    <div class="form-info">
+
+        <h1>Edit Food Item</h1>
+
+        <p>
+            Update your food details, quantity,
+            supplier and expiry information.
+        </p>
+
+        <div class="food-icons">
+
+            <span>🥛</span>
+            <span>🍞</span>
+            <span>🧀</span>
+            <span>🍎</span>
+            <span>🥚</span>
+            <span>🥫</span>
+            <span>🍚</span>
+            <span>🥤</span>
+
+        </div>
+
+        <p>
+            Keep your inventory information correct
+            so FreshAlert can calculate expiry status accurately.
+        </p>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="form-content">
+
+        <h2>Edit Food Details</h2>
+
+        <form method="POST">
+
+            <div class="form-grid">
+
+                <!-- FOOD NAME -->
+                <div class="form-group">
+
+                    <label>Food Name</label>
+
+                    <input
+                        type="text"
+                        name="food_name"
+                        value="{{ food.food_name }}"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CATEGORY -->
+                <div class="form-group">
+
+                    <label>Category</label>
+
+                    <input
+                        type="text"
+                        name="category"
+                        value="{{ food.category }}"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- QUANTITY -->
+                <div class="form-group">
+
+                    <label>Quantity</label>
+
+                    <input
+                        type="number"
+                        name="quantity"
+                        min="0"
+                        value="{{ food.quantity }}"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- UNIT -->
+                <div class="form-group">
+
+                    <label>Unit</label>
+
+                    <select name="unit">
+
+                        <option value="PC"
+                            {% if food.unit == 'PC' %}selected{% endif %}>
+                            Piece
+                        </option>
+
+                        <option value="KG"
+                            {% if food.unit == 'KG' %}selected{% endif %}>
+                            Kg
+                        </option>
+
+                        <option value="GM"
+                            {% if food.unit == 'GM' %}selected{% endif %}>
+                            Gram
+                        </option>
+
+                        <option value="LT"
+                            {% if food.unit == 'LT' %}selected{% endif %}>
+                            Litre
+                        </option>
+
+                        <option value="ML"
+                            {% if food.unit == 'ML' %}selected{% endif %}>
+                            ml
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PURCHASE DATE -->
+                <div class="form-group">
+
+                    <label>Purchase Date</label>
+
+                    <input
+                        type="date"
+                        name="purchase_date"
+                        value="{{ food.purchase_date }}"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EXPIRY DATE -->
+                <div class="form-group">
+
+                    <label>Expiry Date</label>
+
+                    <input
+                        type="date"
+                        name="expiry_date"
+                        value="{{ food.expiry_date }}"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SUPPLIER -->
+                <div class="form-group full-width">
+
+                    <label>Supplier</label>
+
+                    <select name="supplier_id">
+
+                        <option value="">
+                            Select Supplier
+                        </option>
+
+                        {% for supplier in suppliers %}
+
+                        <option
+                            value="{{ supplier.supplier_id }}"
+                            {% if food.supplier_id == supplier.supplier_id %}
+                                selected
+                            {% endif %}
+                        >
+                            {{ supplier.supplier_name }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+            <div class="form-actions">
+
+                <a href="{{ url_for('foods') }}"
+                   class="cancel-button">
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="main-btn"
+                    style="margin:0;">
+                    Update Food
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

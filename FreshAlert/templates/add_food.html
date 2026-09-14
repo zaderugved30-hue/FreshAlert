@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshAlert - Add Food</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">🍃</span>
+        FreshAlert
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+        <a href="{{ url_for('foods') }}" class="active">
+            🍴 Foods
+        </a>
+
+        <a href="{{ url_for('suppliers') }}">
+            🚚 Suppliers
+        </a>
+
+        <a href="{{ url_for('profile') }}">
+            👤 Profile
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- MAIN FORM -->
+<div class="form-page">
+
+    <!-- LEFT INFORMATION SIDE -->
+    <div class="form-info">
+
+        <h1>Add Food Item</h1>
+
+        <p>
+            Add a new food item to your inventory
+            and keep track of its expiry date.
+        </p>
+
+        <div class="food-icons">
+
+            <span>🥛</span>
+            <span>🍞</span>
+            <span>🧀</span>
+            <span>🍎</span>
+            <span>🥚</span>
+            <span>🥫</span>
+            <span>🍚</span>
+            <span>🥤</span>
+
+        </div>
+
+        <p>
+            FreshAlert helps you organize different types
+            of food including dairy, bakery, fruits,
+            packaged food, grains and beverages.
+        </p>
+
+    </div>
+
+
+    <!-- RIGHT FORM SIDE -->
+    <div class="form-content">
+
+        <h2>Food Details</h2>
+
+        <form method="POST">
+
+            <div class="form-grid">
+
+                <!-- FOOD NAME -->
+                <div class="form-group">
+
+                    <label>Food Name</label>
+
+                    <input
+                        type="text"
+                        name="food_name"
+                        placeholder="Example: Milk"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CATEGORY -->
+                <div class="form-group">
+
+                    <label>Category</label>
+
+                    <input
+                        type="text"
+                        name="category"
+                        placeholder="Example: Dairy"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- QUANTITY -->
+                <div class="form-group">
+
+                    <label>Quantity</label>
+
+                    <input
+                        type="number"
+                        name="quantity"
+                        min="0"
+                        placeholder="Example: 2"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- UNIT -->
+                <div class="form-group">
+
+                    <label>Unit</label>
+
+                    <select name="unit">
+
+                        <option value="PC">Piece</option>
+                        <option value="KG">Kg</option>
+                        <option value="GM">Gram</option>
+                        <option value="LT">Litre</option>
+                        <option value="ML">ml</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PURCHASE DATE -->
+                <div class="form-group">
+
+                    <label>Purchase Date</label>
+
+                    <input
+                        type="date"
+                        name="purchase_date"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EXPIRY DATE -->
+                <div class="form-group">
+
+                    <label>Expiry Date</label>
+
+                    <input
+                        type="date"
+                        name="expiry_date"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SUPPLIER -->
+                <div class="form-group full-width">
+
+                    <label>Supplier</label>
+
+                    <select name="supplier_id">
+
+                        <option value="">
+                            Select Supplier
+                        </option>
+
+                        {% for supplier in suppliers %}
+
+                        <option value="{{ supplier.supplier_id }}">
+                            {{ supplier.supplier_name }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+            <div class="form-actions">
+
+                <a href="{{ url_for('foods') }}"
+                   class="cancel-button">
+
+                    Cancel
+
+                </a>
+
+                <button type="submit"
+                        class="main-btn"
+                        style="margin:0;">
+
+                    Add Food
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

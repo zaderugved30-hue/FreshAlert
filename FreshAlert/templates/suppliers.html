@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshAlert - Suppliers</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">🍃</span>
+        FreshAlert
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+        <a href="{{ url_for('foods') }}">
+            🍴 Foods
+        </a>
+
+        <a href="{{ url_for('suppliers') }}" class="active">
+            🚚 Suppliers
+        </a>
+
+        <a href="{{ url_for('profile') }}">
+            👤 Profile
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="page-header">
+
+        <div>
+
+            <h1>Suppliers</h1>
+
+            <p>
+                View and manage food suppliers.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUPPLIER TABLE -->
+    <div class="table-card">
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Supplier ID</th>
+                        <th>Supplier Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                {% for supplier in suppliers %}
+
+                    <tr>
+
+                        <td>
+                            {{ supplier.supplier_id }}
+                        </td>
+
+                        <td>
+
+                            <strong>
+                                {{ supplier.supplier_name }}
+                            </strong>
+
+                        </td>
+
+                        <td>
+                            {{ supplier.phone }}
+                        </td>
+
+                        <td>
+                            {{ supplier.email }}
+                        </td>
+
+                    </tr>
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="4"
+                            class="empty-row">
+
+                            No suppliers found.
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <div class="supplier-count">
+
+        Total Suppliers:
+        <strong>{{ suppliers|length }}</strong>
+
+    </div>
+
+
+    <div class="tip-box">
+
+        🚚 Suppliers help you keep track of
+        where your food products come from.
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

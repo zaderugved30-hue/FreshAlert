@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshAlert - Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">🍃</span>
+        FreshAlert
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('dashboard') }}" class="active">
+            🏠 Dashboard
+        </a>
+
+        <a href="{{ url_for('foods') }}">
+            🍴 Foods
+        </a>
+
+        <a href="{{ url_for('suppliers') }}">
+            🚚 Suppliers
+        </a>
+
+        <a href="{{ url_for('profile') }}">
+            👤 Profile
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MAIN DASHBOARD ================= -->
+<div class="container">
+
+    <!-- ================= WELCOME SECTION ================= -->
+    <div class="dashboard-header">
+
+        <div>
+
+            <p class="small-heading">
+                Welcome back,
+            </p>
+
+            <h1>
+                {{ session.get('name', session.get('username')) }}!
+            </h1>
+
+            <p class="dashboard-subtitle">
+                Here is an overview of your food inventory.
+            </p>
+
+        </div>
+
+
+        <!-- DATE -->
+        <div class="date-card">
+
+            <span class="date-icon">
+                📅
+            </span>
+
+            <div>
+
+                <strong>Today</strong>
+
+                <p>
+                    {{ current_date.strftime('%d %B %Y') }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SUMMARY CARDS ================= -->
+    <div class="summary-grid">
+
+        <!-- TOTAL ITEMS -->
+        <div class="summary-card total-card">
+
+            <div class="summary-icon total-icon">
+                📦
+            </div>
+
+            <div>
+
+                <p class="summary-label">
+                    Total Items
+                </p>
+
+                <h2>
+                    {{ total }}
+                </h2>
+
+                <span class="summary-description">
+                    Items in inventory
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- EXPIRED ITEMS -->
+        <div class="summary-card expired-card">
+
+            <div class="summary-icon expired-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <p class="summary-label">
+                    Expired Items
+                </p>
+
+                <h2>
+                    {{ expired }}
+                </h2>
+
+                <span class="summary-description">
+                    Need attention
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- EXPIRING SOON -->
+        <div class="summary-card soon-card">
+
+            <div class="summary-icon soon-icon">
+                ⏰
+            </div>
+
+            <div>
+
+                <p class="summary-label">
+                    Expiring Soon
+                </p>
+
+                <h2>
+                    {{ soon }}
+                </h2>
+
+                <span class="summary-description">
+                    Less than 10 days
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAFE ITEMS -->
+        <div class="summary-card safe-card">
+
+            <div class="summary-icon safe-icon">
+                ✅
+            </div>
+
+            <div>
+
+                <p class="summary-label">
+                    Safe Items
+                </p>
+
+                <h2>
+                    {{ safe }}
+                </h2>
+
+                <span class="summary-description">
+                    Safe for now
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ITEM STATUS OVERVIEW ================= -->
+    <div class="status-overview-card">
+
+        <!-- STATUS HEADER -->
+        <div class="status-title">
+
+            <div>
+
+                <h2>
+                    Item Status Overview
+                </h2>
+
+                <p>
+                    Current condition of your food inventory
+                </p>
+
+            </div>
+
+
+            <span class="status-main-icon">
+                📊
+            </span>
+
+        </div>
+
+
+        <!-- ================= STATUS CONTENT ================= -->
+        <div class="status-content">
+
+
+            <!-- ================= DONUT CHART ================= -->
+            <div class="status-total">
+
+                <div class="status-circle">
+
+                    <div class="status-circle-inner">
+
+                        <h2>
+                            {{ total }}
+                        </h2>
+
+                        <p>
+                            Total Items
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= STATUS DETAILS ================= -->
+            <div class="status-list">
+
+
+                <!-- SAFE -->
+                <div class="status-row">
+
+                    <div class="status-name">
+
+                        <span class="status-dot safe-dot"></span>
+
+                        <span>
+                            Safe Items
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        {{ safe }}
+                    </strong>
+
+                </div>
+
+
+                <!-- EXPIRING SOON -->
+                <div class="status-row">
+
+                    <div class="status-name">
+
+                        <span class="status-dot soon-dot"></span>
+
+                        <span>
+                            Expiring Soon
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        {{ soon }}
+                    </strong>
+
+                </div>
+
+
+                <!-- EXPIRED -->
+                <div class="status-row">
+
+                    <div class="status-name">
+
+                        <span class="status-dot expired-dot"></span>
+
+                        <span>
+                            Expired Items
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        {{ expired }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

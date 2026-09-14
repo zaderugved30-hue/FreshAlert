@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshAlert - Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <!-- LEFT SIDE -->
+    <div class="auth-left">
+
+        <div class="auth-brand">
+            🍃 FreshAlert
+        </div>
+
+        <h1>
+            Keep Your Food Fresh,<br>
+            Keep Your Life Healthy
+        </h1>
+
+        <p>
+            Track expiry dates, manage your food inventory
+            and reduce unnecessary food waste.
+        </p>
+
+        <div class="food-visual">
+            <span>🥛</span>
+            <span>🍞</span>
+            <span>🧀</span>
+            <span>🍎</span>
+            <span>🥚</span>
+            <span>🥫</span>
+            <span>🍚</span>
+            <span>🥤</span>
+        </div>
+
+        <p style="margin-top:25px; font-weight:bold;">
+            Good Food • Better Days
+        </p>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="auth-right">
+
+        <div class="auth-card">
+
+            <h2>Welcome Back</h2>
+
+            <p class="small-text">
+                Login to your FreshAlert account
+            </p>
+
+
+            {% if message %}
+            <div class="error-message">
+                {{ message }}
+            </div>
+            {% endif %}
+
+
+            <form method="POST">
+
+                <!-- USERNAME -->
+                <div class="form-group">
+
+                    <label>Username</label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Enter your username"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+                <button
+                    type="submit"
+                    class="main-btn">
+
+                    Login
+
+                </button>
+
+            </form>
+
+
+            <!-- REGISTER -->
+            <div class="auth-bottom">
+
+                Don't have an account?
+
+                <a href="{{ url_for('register') }}">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
