@@ -91,6 +91,8 @@ Information includes:
 Users can also search for food using the food name or category.
 
 <img width="1920" height="1080" alt="Screenshot (160)" src="https://github.com/user-attachments/assets/6bb47eba-5752-4a68-8ce1-e06daf29353d" />
+<img width="1920" height="1080" alt="Screenshot (164)" src="https://github.com/user-attachments/assets/79b49f5f-f0e5-47cf-9e08-6883b8d8d0dc" />
+
 
 
 ---
